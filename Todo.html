@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🎬 IT 2030 – Battle der Zukunftsvisionen</title>
+
+<style>
+
+body{
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:#f3f6fa;
+    margin:0;
+    padding:30px;
+    color:#333;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.header{
+    background:linear-gradient(135deg,#1f2937,#374151);
+    color:white;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.section{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+h1,h2,h3{
+    margin-top:0;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    font-weight:600;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+    box-sizing:border-box;
+}
+
+textarea{
+    min-height:90px;
+    resize:vertical;
+}
+
+ul{
+    line-height:1.7;
+}
+
+.buttons{
+    margin-top:25px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+button{
+    border:none;
+    padding:12px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.copy{
+    background:#2563eb;
+    color:white;
+}
+
+.reset{
+    background:#dc2626;
+    color:white;
+}
+
+.preview{
+    background:#f8fafc;
+    border-left:5px solid #2563eb;
+    padding:20px;
+    border-radius:10px;
+    white-space:pre-wrap;
+    line-height:1.6;
+    margin-top:20px;
+}
+
+.footer{
+    text-align:center;
+    color:#666;
+    margin-top:25px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+    <h1>🎬 IT 2030 – Battle der Zukunftsvisionen</h1>
+    <p>Team Day Workshop • 45 Minuten • 2 Teams</p>
+</div>
+
+<div class="section">
+
+<h2>📋 Eure Aufgabe</h2>
+
+<p>
+Stellt euch vor, im Jahr 2030 erscheint ein Kinofilm über die Zukunft der IT-
+und Softwareentwicklung.
+</p>
+
+<p>
+Entwickelt als Team ein Filmplakat und erstellt es mit einer KI eurer Wahl
+(Copilot, ChatGPT, Gemini, Claude, Midjourney etc.).
+</p>
+
+<h3>Euer Film benötigt:</h3>
+
+<ul>
+<li>🎬 Filmtitel</li>
+<li>🦸 Hauptfigur</li>
+<li>😈 Bösewicht / Herausforderung</li>
+<li>🚀 Schlüsseltechnologie im Jahr 2030</li>
+<li>💬 Werbeslogan</li>
+<li>🤖 Was macht die KI?</li>
+<li>👨‍💻 Was machen Menschen weiterhin besser?</li>
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>✏️ Eure Filmidee</h2>
+
+<label>Titel des Films</label>
+<input id="titel">
+
+<label>Hauptfigur</label>
+<textarea id="hauptfigur"></textarea>
+
+<label>Bösewicht / Herausforderung</label>
+<textarea id="boesewicht"></textarea>
+
+<label>Schlüsseltechnologie</label>
+<textarea id="technologie"></textarea>
+
+<label>Slogan</label>
+<input id="slogan">
+
+<label>Was macht die KI?</label>
+<textarea id="ki"></textarea>
+
+<label>Was machen Menschen weiterhin besser?</label>
+<textarea id="menschen"></textarea>
+
+<div class="buttons">
+    <button class="copy" id="copyBtn" onclick="copyPrompt()">
+        📋 Prompt kopieren
+    </button>
+
+    <button class="reset" onclick="resetFields()">
+        🗑️ Zurücksetzen
+    </button>
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>🎨 Vorschau des fertigen Prompts</h2>
+
+<div id="preview" class="preview"></div>
+
+</div>
+
+<div class="footer">
+🚀 Wer gewinnt den Oscar für die beste Zukunftsvision?
+</div>
+
+</div>
+
+<script>
+
+const fields = [
+'titel',
+'hauptfigur',
+'boesewicht',
+'technologie',
+'slogan',
+'ki',
+'menschen'
+];
+
+function buildPrompt() {
+
+return `Erstelle ein episches Kinoposter im Hollywood-Stil.
+
+Titel des Films:
+${document.getElementById('titel').value}
+
+Die Handlung spielt im Jahr 2030 und zeigt die Zukunft der IT- und Softwareentwicklung.
+
+Hauptfigur:
+${document.getElementById('hauptfigur').value}
+
+Bösewicht / Herausforderung:
+${document.getElementById('boesewicht').value}
+
+Schlüsseltechnologie:
+${document.getElementById('technologie').value}
+
+Slogan auf dem Poster:
+"${document.getElementById('slogan').value}"
+
+Was macht die KI?
+${document.getElementById('ki').value}
+
+Was machen Menschen weiterhin besser?
+${document.getElementById('menschen').value}
+
+Darstellung:
+- futuristische IT-Arbeitswelt
+- humorvoll aber realistisch
+- beeindruckende Science-Fiction Atmosphäre
+- hochwertiges Blockbuster-Kinoposter
+- viele Details
+- professionelles Filmplakat-Design
+- Kinoreife Beleuchtung
+- großes Film-Logo
+- hochauflösendes vertikales Filmplakat`;
+}
+
+function updatePreview(){
+    document.getElementById('preview').innerText = buildPrompt();
+}
+
+fields.forEach(field => {
+
+    const el = document.getElementById(field);
+
+    const storedValue = localStorage.getItem(field);
+
+    if(storedValue){
+        el.value = storedValue;
+    }
+
+    el.addEventListener('input', function(){
+
+        localStorage.setItem(field, el.value);
+
+        updatePreview();
+    });
+
+});
+
+async function copyPrompt(){
+
+    await navigator.clipboard.writeText(buildPrompt());
+
+    const btn = document.getElementById("copyBtn");
+
+    btn.innerHTML = "✅ Prompt kopiert";
+
+    setTimeout(() => {
+        btn.innerHTML = "📋 Prompt kopieren";
+    }, 2000);
+}
+
+function resetFields(){
+
+    if(confirm("Alle Eingaben löschen?")){
+
+        fields.forEach(field => {
+
+            localStorage.removeItem(field);
+
+            document.getElementById(field).value = "";
+        });
+
+        updatePreview();
+    }
+}
+
+updatePreview();
+
+</script>
+
+</body>
+</html>
